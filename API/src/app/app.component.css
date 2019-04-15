@@ -1,0 +1,36 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5em;
+    border: 5px solid #0E49FF;
+    border-radius: 1em;
+}
+
+.Logo {
+    width: 100%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+    background-color: #0E49FF;
+}
+
+.Api {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.SearchInput {
+    margin: 1em;
+}
+
+.Search-container, .Score-container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.Photo, .Title, .Artists, .Date, .Sum {
+    margin: 1em;
+}
