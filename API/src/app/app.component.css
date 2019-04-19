@@ -51,7 +51,7 @@
 .Score-container {
     width: 100%;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     align-items: center;
     text-align: center;
 }
@@ -110,16 +110,20 @@
     margin-left: 2em;
 }
 
-.hide {
+.showBtn {
     background: url("../assets/img/plus.png") no-repeat;
     background-position: center;
     background-size: cover;
     border: none;
 }
 
-.show {
+.hideBtn {
     background: url("../assets/img/minus.png") no-repeat;
     background-position: center;
     background-size: cover;
     border: none;
+}
+
+.off {
+    display: none;
 }

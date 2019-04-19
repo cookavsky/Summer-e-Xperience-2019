@@ -34,7 +34,7 @@
         </div>
     </article>
     <article class="Score-container" *ngIf="searchAlb">
-        <div class="Score" *ngFor="let alb of searchAlb">
+        <section class="Score" *ngFor="let alb of searchAlb">
             <div class="Photo">
                 <img class="Img" src="{{ alb.images[1].url }}" alt="{{ alb.name }}">
             </div>
@@ -51,9 +51,44 @@
                 <h2>{{alb.total_tracks}}</h2>
             </div>
             <div class="More">
-                <button class="SortBtn hide" (click)="ShowMore($event)"></button>
+                <button class="SortBtn showBtn" (click)="ShowMore($event, alb)"></button>
             </div>
-        </div>
+        </section>
+    </article>
+    <article class="Score-container" *ngIf="album">
+        <section class="Score">
+            <div class="Photo">
+                <img class="Img" src="{{ album.images[1].url }}" alt="{{ album.name }}">
+            </div>
+            <div class="Title">
+                <h2>{{album.name}}</h2>
+            </div>
+            <div class="Artists">
+                <h2 *ngFor="let art of album.artists">{{art.name}}</h2>
+            </div>
+            <div class="Date">
+                <h2>{{album.release_date}}</h2>
+            </div>
+            <div class="Sum">
+                <h2>{{album.total_tracks}}</h2>
+            </div>
+            <div class="More">
+                <button class="SortBtn hideBtn" (click)="ShowMore($event, alb)"></button>
+            </div>
+        </section>
+        <section class="Score">
+            <div class="Sum">
+                    <h2>{{album.popularity}}</h2>
+            </div>
+            <div class="Sum">
+
+            </div>
+            <div class="Sum">
+                <div *ngFor="let track of album.tracks.items">
+                    <h2> {{track.track_number}} - {{track.name}} - {{track.duration_ms}}ms</h2>
+                </div>
+            </div>
+        </section>
     </article>
 </main>
 <router-outlet></router-outlet>

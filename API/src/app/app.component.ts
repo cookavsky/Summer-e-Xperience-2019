@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpService } from './http.service';
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
+import { Album } from './Album';
+import { More } from './More';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,16 @@ import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 })
 export class AppComponent {
   searchStr: string;
-  searchAlb: [];
+  searchAlb: Album[];
+  album: More[];
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService) {};
 
   searchAlbum() {
     if (this.searchStr !== "") {
+      this.album = null;
     this.httpService.searchAlbum(this.searchStr)
-      .subscribe(alb => {
+      .subscribe((alb : any) => {
         this.searchAlb = alb.albums.items;
       })
     } else {
@@ -26,22 +29,28 @@ export class AppComponent {
 
   SortName() {
     if (this.searchAlb !== undefined) {
-    this.searchAlb.sort(function (a, b) { return a.name < b.name ? -1 : 1 });
+      this.searchAlb.sort((a, b) => { return a.name < b.name ? -1 : 1 });
     } else {}
   }
   SortDate() {
     if (this.searchAlb !== undefined) {
-    this.searchAlb.sort(function (a, b) { return a.release_date < b.release_date ? -1 : 1 });
+      this.searchAlb.sort((a, b) => { return a.release_date < b.release_date ? -1 : 1 });
     } else {}
   }
 
-  ShowMore(event) {
-    if (event.target.className === "SortBtn hide") {
-      event.target.classList.add("show");
-      event.target.classList.remove("hide");
-    } else if (event.target.className === "SortBtn show") {
-      event.target.classList.remove("show");
-      event.target.classList.add("hide");
+  ShowMore(event, alb) {
+    if (event.target.className === "SortBtn showBtn") {
+      this.searchAlb = [];
+      this.httpService.getMore(alb.id)
+        .subscribe((art: any) => {
+          this.album = art;
+        })
+    } else if (event.target.className === "SortBtn hideBtn") {
+      this.album = null;
+      this.httpService.searchAlbum(this.searchStr)
+        .subscribe((alb: any) => {
+          this.searchAlb = alb.albums.items;
+        })
     }
   }
 }
