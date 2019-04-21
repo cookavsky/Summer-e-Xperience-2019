@@ -1,4 +1,4 @@
-import {Album} from './Album'
+import {Album} from './album';
 
 export class More {
   id: number;

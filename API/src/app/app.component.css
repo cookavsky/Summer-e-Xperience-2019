@@ -13,7 +13,7 @@
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
-    background-color: #0E49FF;
+    background-color: black;
     padding: 0.5em 2em;
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
@@ -24,10 +24,15 @@
 }
 
 .SearchInput {
+    text-align: center;
+    height: 3em;
+    border-radius: .5em;
+    border: none;
     margin: 1em;
 }
 
-.Search-container, .Score-container {
+.Search-container {
+    font-family: 'Open Sans', sans-serif;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
@@ -43,20 +48,18 @@
 }
 
 .Spotify-Logo {
-    width: 2em;
+    width: 6em;
     height: 2em;
     margin-right: 1em;
 }
 
-.Score-container {
-    width: 100%;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    text-align: center;
+.Bold-font {
+    padding: 2em 0;
+    font-family: 'Roboto', sans-serif;
 }
 
-.Score {
+.Header {
+    font-family: 'Roboto', sans-serif;
     width: 100%;
     display: flex;
     flex-flow: row wrap;
@@ -68,22 +71,41 @@
 
 .Title, .Date {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row;
     align-items: center;
     text-align: center;
     justify-content: center;
-    flex-basis: calc(18%);
+    flex-basis: 18%;
     padding: 1em 0;
 }
 
 .Photo, .Artists, .Sum {
-    flex-basis: calc(18%);
+    flex-basis: 18%;
     padding: 1em 0;
 }
 
-.More {
-    flex-basis: calc(10%);
+.MoreBtn {
+    flex-basis: 10%;
     padding: 1em 0;
+}
+
+.Score-container, .More {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+}
+
+.Score, .More-info {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #0E49FF;
+    padding: 0.5em 0;
 }
 
 .Img {
@@ -97,33 +119,71 @@
 }
 
 .BtnName {
-    background: url("../assets/img/sortName.png") no-repeat;
+    background: url("../assets/img/sortName.svg") no-repeat;
     background-position: center;
     background-size: cover;
     margin-left: 2em;
 }
 
 .BtnDate {
-    background: url("../assets/img/sortDate.png") no-repeat;
+    background: url("../assets/img/sortDate.svg") no-repeat;
     background-position: center;
     background-size: cover;
     margin-left: 2em;
 }
 
 .showBtn {
-    background: url("../assets/img/plus.png") no-repeat;
+    background: url("../assets/img/plus.svg") no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: 100% 100%;
     border: none;
 }
 
 .hideBtn {
-    background: url("../assets/img/minus.png") no-repeat;
+    background: url("../assets/img/minus.svg") no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: 100% 100%;
     border: none;
 }
 
-.off {
-    display: none;
+.Total-duration, .Popularity {
+    padding: 5em;
+}
+
+.Track-container {
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    padding: 1em 0;
+}
+
+.Track {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #0E49FF;
+    padding: 0.5em 0;
+}
+
+@media (max-width: 900px) {
+    .main {
+        margin: 3em;
+    }
+    .Api {
+        justify-content: center;
+    }
+    .Search-container {
+        justify-content: center;
+    }
+    .Photo, .Title, .Date, .Artists, .Sum, .MoreBtn  {
+        flex-basis: 50%;
+    }
+    .Total-duration, .Popularity {
+        padding: 1em;
+    }
+    .audio {
+        width: 100%;
+    }
 }

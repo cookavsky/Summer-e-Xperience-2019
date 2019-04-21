@@ -7,11 +7,10 @@
             </div>
         </section>
         <section class="Spotify">
-            <img class="Spotify-Logo" src="../assets/img/spotify.svg" alt="Spotify Logo">
-            <h1>Spotify</h1>
+            <img class="Spotify-Logo" src="../assets/img/spotify.png" alt="Spotify Logo">
         </section>
     </article>
-    <article class="Score">
+    <article class="Header Bold-font">
         <div class="Photo">
             <h2>Zdjęcie</h2>
         </div>
@@ -29,14 +28,14 @@
         <div class="Sum">
             <h2>Liczba utworów</h2>
         </div>
-        <div class="More">
+        <div class="MoreBtn">
             <h2>Szczegóły</h2>
         </div>
     </article>
     <article class="Score-container" *ngIf="searchAlb">
         <section class="Score" *ngFor="let alb of searchAlb">
             <div class="Photo">
-                <img class="Img" src="{{ alb.images[1].url }}" alt="{{ alb.name }}">
+                <img class="Img" [src]="alb.images | noimg" alt="{{ alb.name }}">
             </div>
             <div class="Title">
                 <h2>{{alb.name}}</h2>
@@ -50,7 +49,7 @@
             <div class="Sum">
                 <h2>{{alb.total_tracks}}</h2>
             </div>
-            <div class="More">
+            <div class="MoreBtn">
                 <button class="SortBtn showBtn" (click)="ShowMore($event, alb)"></button>
             </div>
         </section>
@@ -58,7 +57,7 @@
     <article class="Score-container" *ngIf="album">
         <section class="Score">
             <div class="Photo">
-                <img class="Img" src="{{ album.images[1].url }}" alt="{{ album.name }}">
+                <img class="Img" [src]="album.images | noimg" alt="{{ album.name }}">
             </div>
             <div class="Title">
                 <h2>{{album.name}}</h2>
@@ -72,23 +71,28 @@
             <div class="Sum">
                 <h2>{{album.total_tracks}}</h2>
             </div>
-            <div class="More">
+            <div class="MoreBtn">
                 <button class="SortBtn hideBtn" (click)="ShowMore($event, alb)"></button>
             </div>
         </section>
-        <section class="Score">
-            <div class="Sum">
+        <section class="More">
+            <div class="More-info">
+                <div class="Total_duration">
+                    <h2 class="Bold-font">Długość albumu</h2>
+                    <h2>{{(getSum(album) / 60000) | number:'1.2-2'}} min</h2>
+                </div>
+                <div class="Popularity">
+                    <h2 class="Bold-font">Popularność</h2>
                     <h2>{{album.popularity}}</h2>
+                </div>
             </div>
-            <div class="Sum">
-
-            </div>
-            <div class="Sum">
-                <div *ngFor="let track of album.tracks.items">
-                    <h2> {{track.track_number}} - {{track.name}} - {{track.duration_ms}}ms</h2>
+            <div class="Track-container">
+                <h2 class="Bold-font">Lista utworów</h2>
+                <div class="Track" *ngFor="let track of album.tracks.items">
+                    <h2>{{track.track_number}} - {{track.name}} - {{(track.duration_ms / 60000) | number:'1.2-2'}} min</h2>
+                    <audio class="audio" controls src="{{track.preview_url}}"></audio>
                 </div>
             </div>
         </section>
     </article>
 </main>
-<router-outlet></router-outlet>

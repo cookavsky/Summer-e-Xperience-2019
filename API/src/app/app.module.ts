@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpService } from './http.service';
 import { FormsModule } from '@angular/forms';
+import { NoimgPipe } from './noimg.pipe';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NoimgPipe
   ],
   imports: [
     BrowserModule,
