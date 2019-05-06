@@ -8,7 +8,7 @@ export class HttpService implements OnInit{
   private albumUrl: string;
   private searchUrl: string;
 
-  private access_token: string = 'BQAOjk9b7p-JnbBJhKi_aHGZ4yrIcxklVZF2x8YN2XWelvgOsp0wFqBsMRfXN104ebgO3uAPrIBswq0LuwQvN8lD4CrNu1qXP9-biwLCK8pAMdxPD2b8p4sXhNHNwt2QX0v9C9AsrZoelhww-kICgV2vcA';
+  private access_token: string = 'BQCLcHakOi0mzgRhG9-whhUBma11g14NWiRpJsv098EADhXK0bMNUYLHQ_o8XS9r-5U5-fCcNcbhctheu_MM5wP-sp6JtbyLnJWzsqdQs3IdXX5mu7FIQUg6KxLfU78YDaqO96L9bcB1oPoUcZR-GgjsTA';
 
   constructor(private _http: HttpClient) { }
 
